@@ -83,15 +83,20 @@ export const login = async(req,res)=>{
     }
 }
 
-export const logout = async(req,res)=>{
- try {
-    res.cookie("jwt", "", {maxAge:0})
-    res.status(200).json({message : "logout successfully"})
- } catch (error) {
-     console.error(`Logout controler error, ${error}`)
-     res.status(500).json({ message: "Internal server" })
- }   
-}
+export const logout = async (req, res) => {
+  try {
+    res.cookie("jwt", "", {
+      maxAge: 0,
+      httpOnly: true,
+      sameSite: "none",   // MUST match your generateToken setting
+      secure: true,       // MUST match your generateToken setting
+    });
+    res.status(200).json({ message: "logout successfully" });
+  } catch (error) {
+    console.error(`Logout controller error, ${error}`);
+    res.status(500).json({ message: "Internal server" });
+  }
+};
 
 export const getMe = async (req, res )=>{
     try {
