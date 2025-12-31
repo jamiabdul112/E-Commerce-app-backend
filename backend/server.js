@@ -22,7 +22,7 @@ const app = express()
 
 app.use(
     cors({
-        origin: "http://localhost:3000",
+        origin: "https://e-commerce-app-frontend-1.onrender.com",
         credentials: true,
     })
 )
