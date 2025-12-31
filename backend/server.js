@@ -37,7 +37,7 @@ app.use(express.urlencoded({ extended: true, limit: "5mb" }));
 
 
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 5000
 
 app.use("/api/auth", authRoute)
 app.use("/api/product", productRoute)
@@ -45,7 +45,7 @@ app.use("/api/wishlist", wishListRoute)
 app.use("/api/cart", cartRoute)
 app.use("/api/payment", buyRoute)
 
-app.listen(PORT, ()=>{
+app.listen(PORT, '0.0.0.0',()=>{
     console.log(`Server is running on ${PORT}`)
     connectDB()
 })
